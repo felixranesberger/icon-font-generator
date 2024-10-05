@@ -15,7 +15,7 @@ module.exports.validate = options => {
 };
 
 function validateTypes(types) {
-    const validTypes = ['svg', 'ttf', 'woff', 'woff2', 'eot'];
+    const validTypes = ['svg', 'ttf', 'woff2'];
     const values = types && types.length > 0 ? types : validTypes;
 
     for (const item of values) {

@@ -1,7 +1,5 @@
 const {ensureDirectories, writeFile} = require('./utils/files');
 const {generateWoff2} = require('./modules/generate-woff2');
-const {generateWoff} = require('./modules/generate-woff');
-const {generateEot} = require('./modules/generate-eot');
 const {generateSvg} = require('./modules/generate-svg');
 const {generateTtf} = require('./modules/generate-ttf');
 const {validate} = require('./utils/validate');
@@ -19,10 +17,8 @@ module.exports = async function iconFontGenerator(options) {
     const fontName = name || 'default';
     const svg = await generateSvg(fontName, icons);
     const ttf = await generateTtf(svg.data);
-    const woff = await generateWoff(ttf.data);
     const woff2 = await generateWoff2(ttf.data);
-    const eot = await generateEot(ttf.data);
-    const values = {svg, ttf, woff, woff2, eot};
+    const values = {svg, ttf, woff2};
 
     // 4. Write the files.
     await ensureDirectories(output);
