@@ -1,7 +1,7 @@
-const ttf2woff2 = require('ttf2woff2');
+import ttf2woff2 from 'ttf2woff2';
 
-module.exports.generateWoff2 = async ttf => {
+export async function generateWoff2(ttf) {
     const woff2 = ttf2woff2(new Uint8Array(ttf), {});
     const buffer = Buffer.from(woff2.buffer);
-    return {ext: 'woff2', data: buffer, type: 'binary'};
-};
+    return { ext: 'woff2', data: buffer, type: 'binary' };
+}

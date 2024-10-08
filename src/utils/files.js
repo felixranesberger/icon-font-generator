@@ -1,17 +1,17 @@
-const fse = require('fs-extra');
-const fs = require('fs');
+import fse from 'fs-extra';
+import fs from 'fs';
 
-module.exports.ensureDirectories = async paths => {
+export async function ensureDirectories(paths) {
     const values = Array.isArray(paths) ? paths : [paths];
 
     for (let value of values) {
         await fse.ensureDir(value);
     }
-};
+}
 
-module.exports.writeFile = async (filePath, data, type) => {
+export async function writeFile(filePath, data, type) {
     return new Promise((resolve, reject) => {
-        fs.writeFile(filePath, data, type || 'utf8', error => {
+        fs.writeFile(filePath, data, type || 'utf8', function(error) {
             if (error) {
                 return reject(error);
             }
@@ -19,11 +19,11 @@ module.exports.writeFile = async (filePath, data, type) => {
             return resolve();
         });
     });
-};
+}
 
-module.exports.readFile = async filePath => {
+export async function readFile(filePath) {
     return new Promise((resolve, reject) => {
-        fs.readFile(filePath, 'utf8', (error, data) => {
+        fs.readFile(filePath, 'utf8', function(error, data) {
             if (error) {
                 return reject(error);
             }
@@ -31,12 +31,11 @@ module.exports.readFile = async filePath => {
             return resolve(data);
         });
     });
-};
+}
 
-module.exports.getFileNames = async inputDirectory => {
-    // Read the files of the input directory.
+export async function getFileNames(inputDirectory) {
     return new Promise((resolve, reject) => {
-        fs.readdir(inputDirectory, (error, files) => {
+        fs.readdir(inputDirectory, function(error, files) {
             if (error) {
                 return reject(error);
             }
@@ -44,4 +43,4 @@ module.exports.getFileNames = async inputDirectory => {
             return resolve(files || []);
         });
     });
-};
+}

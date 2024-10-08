@@ -1,4 +1,4 @@
-module.exports.validate = options => {
+export function validate(options) {
     options = options || {};
 
     if (!options.input) {
@@ -12,7 +12,7 @@ module.exports.validate = options => {
     const types = validateTypes(options.types);
 
     return {...options, types};
-};
+}
 
 function validateTypes(types) {
     const validTypes = ['svg', 'ttf', 'woff2'];

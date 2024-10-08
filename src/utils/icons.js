@@ -1,7 +1,7 @@
-const {getFileNames} = require('./files');
-const path = require('path');
+import path from 'node:path';
+import { getFileNames } from './files.js';
 
-module.exports.getIcons = async inputDirectory => {
+export async function getIcons(inputDirectory) {
     const fileNames = await getFileNames(inputDirectory);
 
     return fileNames
@@ -10,4 +10,4 @@ module.exports.getIcons = async inputDirectory => {
             path: path.join(inputDirectory, fileName),
             name: fileName.replace('.svg', '')
         }));
-};
+}

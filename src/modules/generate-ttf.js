@@ -1,7 +1,7 @@
-const svg2ttf = require('svg2ttf');
+import svg2ttf from 'svg2ttf';
 
-module.exports.generateTtf = async svg => {
+export async function generateTtf(svg) {
     const ttf = svg2ttf(svg, {});
     const buffer = Buffer.from(ttf.buffer);
-    return {ext: 'ttf', data: buffer, type: 'binary'};
-};
+    return { ext: 'ttf', data: buffer, type: 'binary' };
+}

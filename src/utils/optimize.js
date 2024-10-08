@@ -1,7 +1,7 @@
-const {readFile} = require('./files');
-const {optimize} = require('svgo');
+import {optimize} from 'svgo';
+import {readFile} from './files.js';
 
-module.exports.execute = async icons => {
+export async function execute(icons) {
     for (let icon of icons) {
         // Read the string data of the file.
         const data = await readFile(icon.path);
@@ -14,4 +14,4 @@ module.exports.execute = async icons => {
     }
 
     return icons;
-};
+}

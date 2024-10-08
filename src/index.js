@@ -1,12 +1,13 @@
-const {ensureDirectories, writeFile} = require('./utils/files');
-const {generateWoff2} = require('./modules/generate-woff2');
-const {generateSvg} = require('./modules/generate-svg');
-const {generateTtf} = require('./modules/generate-ttf');
-const {validate} = require('./utils/validate');
-const {getIcons} = require('./utils/icons');
-const path = require('path');
+import { ensureDirectories, writeFile } from './utils/files.js';
+import { generateWoff2 } from './modules/generate-woff2.js';
+import { generateSvg } from './modules/generate-svg.js';
+import { generateTtf } from './modules/generate-ttf.js';
+import { validate } from './utils/validate.js';
+import { getIcons } from './utils/icons.js';
+import path from 'node:path';
 
-module.exports = async function iconFontGenerator(options) {
+
+export async function iconFontGenerator(options) {
     // 1. Validate the options.
     const {name, input, output, types} = validate(options);
 
@@ -31,4 +32,4 @@ module.exports = async function iconFontGenerator(options) {
     }
 
     return paths;
-};
+}
