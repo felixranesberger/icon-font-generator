@@ -38,8 +38,7 @@ async function writeGlyphs(fontStream, icons) {
         const codepoint = String.fromCharCode(codepointStart + codepointOffset++);
         const ligature = icon.name
             .split('')
-            .reduce((previous, current, index) => previous + String.fromCharCode(icon.name.charCodeAt(index)), '')
-            .replace(/-/g, '_');
+            .reduce((previous, current, index) => previous + String.fromCharCode(icon.name.charCodeAt(index)), '');
 
         const glyph = streamFromString(icon.data);
         glyph.metadata = { unicode: [codepoint, ligature], name: icon.name };
